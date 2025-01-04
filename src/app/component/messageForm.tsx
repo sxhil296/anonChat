@@ -35,6 +35,7 @@ const MessageForm = () => {
           setError("Failed to send message. Please try again.");
         }
       } catch (err) {
+        console.error("Error sending message:", err);
         setError("Error sending message. Please try again.");
       } finally {
         setLoading(false);
