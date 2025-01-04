@@ -3,9 +3,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Spinner from "./Spinner";
 
-const MessageForm = () => {
+const MessageForm = ({userId}:{userId:string}) => {
   const [message, setMessage] = useState("");
-  const [userId, setUserId] = useState("");
+  // const [userId, setUserId] = useState("");
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -14,7 +14,7 @@ const MessageForm = () => {
     const storedUserData = localStorage.getItem("userData");
     if (storedUserData) {
       const parsedData = JSON.parse(storedUserData);
-      setUserId(parsedData.userId);
+      // setUserId(parsedData.userId);
       setName(parsedData.name);
     }
   }, []);
@@ -36,6 +36,7 @@ const MessageForm = () => {
         }
       } catch (err) {
         console.error("Error sending message:", err);
+        
         setError("Error sending message. Please try again.");
       } finally {
         setLoading(false);
@@ -48,7 +49,7 @@ const MessageForm = () => {
   return (
     <form onSubmit={handleMessageSubmit} className="w-full space-y-2">
       <div className="text-xl font-medium text-zinc-600 mb-2">
-        Send Anon Message to{" "}
+        Send Anon Message to
         <span className="text-blue-500 font-bold">{name}</span>
       </div>
       <textarea
