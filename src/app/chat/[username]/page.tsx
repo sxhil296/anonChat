@@ -1,8 +1,8 @@
 import MessageForm from "@/app/component/messageForm";
 
 
-export default async function Message({params}:{params:{username:string}}) {
-  const userId = await params.username;
+export default function Message({params}:{params:{username:string}}) {
+  const userId = params.username;
   console.log(userId);
  
   return (
