@@ -5,18 +5,36 @@ import Spinner from "./Spinner";
 
 const MessageForm = ({userId}:{userId:string}) => {
   const [message, setMessage] = useState("");
-  // const [userId, setUserId] = useState("");
+
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const storedUserData = localStorage.getItem("userData");
-    if (storedUserData) {
-      const parsedData = JSON.parse(storedUserData);
-      // setUserId(parsedData.userId);
-      setName(parsedData.name);
-    }
+    const fetchName = async () => {
+      if (userId) {
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/chat/${userId}`,
+            {
+              headers: {
+                "ngrok-skip-browser-warning": "true",
+              },
+            }
+          );
+
+          if (response.status === 200) {
+            const { name } = response.data;
+            setName(name);
+          } else {
+            console.error("Failed to fetch username.");
+          }
+        } catch (err) {
+          console.error("Error fetching username:", err);
+        }
+      }
+    };
+    fetchName();
   }, []);
 
   const handleMessageSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -50,7 +68,7 @@ const MessageForm = ({userId}:{userId:string}) => {
     <form onSubmit={handleMessageSubmit} className="w-full space-y-2">
       <div className="text-xl font-medium text-zinc-600 mb-2">
         Send Anon Message to
-        <span className="text-blue-500 font-bold">{name}</span>
+        <span className="text-blue-500 font-bold">&nbsp;{name}</span>
       </div>
       <textarea
         name="msg"
