@@ -10,7 +10,12 @@ export default async function Message({ params }: PageProps) {
   console.log(username);
 
   return (
-    <div className="mt-20 max-w-3xl mx-auto px-6">
+    <div className="mt-8 max-w-3xl mx-auto px-6">
+     
+      <p className="text-[1rem] font-medium mb-4"> <span className="bg-black text-white p-1">anonChat</span>
+      &nbsp;- <span>No one will know it&apos;s you. Speak freely and send your message!</span></p>
+         
+   
       <MessageForm userId={username} />
     </div>
   );

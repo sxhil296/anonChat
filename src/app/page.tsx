@@ -1,26 +1,26 @@
-
+import Header from "./component/header";
 import MessageFeed from "./component/messageFeed";
 import UserForm from "./component/userForm";
 
 export default function Home() {
-
- 
-
   return (
-    <main className="min-h-[90dvh] w-full ">
-     <div className="flex flex-col max-w-3xl mt-20 gap-6 justify-center items-start mx-auto px-6">
-     <div className=" bg-zinc-800 rounded-md p-4 w-full">
-        <ul className="text-xl font-medium text-white font-mono">
-          <li># Write your name and generate the link</li>
-          <li># Copy the link and share it with your friends</li>
-          <li># They can join the anonymous chat</li>
-        </ul>
-      </div>
-     
-      <UserForm />
-      <MessageFeed />
-      
-     </div>
+    <main className="flex flex-col items-center min-h-screen w-full">
+      <Header />
+   
+  
+
+<div className="max-w-3xl  mx-auto flex flex-col gap-4 md:gap-8 mt-20">
+<div className=" space-y-2 md:space-y-4 mx-auto max-w-full">
+<h2 className="text-2xl md:text-4xl font-bold">
+          Your Link, Their Thoughts - Anonymously!
+        </h2>
+        <p className="text-[1rem] font-medium">With <span className="bg-black text-white p-1">anonChat,</span> create a link, share it, and receive anonymous messages. Whether for fun or feedback, uncover what others have to say - <span className="bg-black text-white p-1"> no names, just honesty! </span></p>
+</div>
+
+        <UserForm />
+        <MessageFeed />
+</div>
+        
   
     </main>
   );

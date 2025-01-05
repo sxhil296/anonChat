@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import Header from "./component/header";
+// import Header from "./component/header";
 import Footer from "./component/footer";
 
 
@@ -20,7 +20,7 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        <Header />
+        {/* <Header /> */}
         {children}
         <Footer />
       </body>

@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { Check, Copy } from "lucide-react";
+import {  CheckCheck, Copy } from "lucide-react";
 import { useEffect, useState } from "react";
 import Spinner from "./Spinner";
 
@@ -75,7 +75,7 @@ export default function UserForm() {
           />
           <button
             type="submit"
-            className="border border-zinc-800 bg-zinc-800 hover:bg-zinc-700 text-white font-medium px-4 py-2 rounded-md"
+            className="border border-black bg-black hover:bg-zinc-800 text-white font-medium px-4 py-2 rounded-md"
             disabled={loading}
           >
             {loading ? <Spinner />: "Generate Link"}
@@ -83,19 +83,18 @@ export default function UserForm() {
           {error && <p className="text-red-500 text-sm">{error}</p>}
         </form>
       ) : (
-        <div className="mt-4 mx-auto max-w-3xl px-6 flex flex-col justify-start items-center gap-2">
-          <p>Your anonymous chat link:</p>
-          <div className="bg-white border border-zinc-400 rounded-md px-4 py-2 flex gap-2 items-center">
+        <div className="mt-4 w-full flex flex-col justify-start items-start gap-2">
+          <p className="text-[1rem] font-medium">Your anonymous chat link:</p>
+          <div className="bg-white border border-black rounded-md px-4 py-2 flex gap-4 items-center">
             <p className="text-blue-500 underline">{link}</p>
             {copied ? (
-              <Check className="size-5 text-zinc-500" />
+              <CheckCheck  className="size-5 text-blue-500" />
             ) : (
               <button onClick={handleCopy} type="button">
-                <Copy className="size-5 text-zinc-500 cursor-pointer" />
+                <Copy className="size-5 text-black cursor-pointer" />
               </button>
             )}
           </div>
-          {copied && <p className="text-sm text-zinc-500 mt-2">Link copied!</p>}
         </div>
       )}
     </div>

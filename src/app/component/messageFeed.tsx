@@ -7,7 +7,6 @@ export default function MessageFeed() {
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
-    // Fetch userId from localStorage
     const storedUserData = localStorage.getItem("userData");
     if (storedUserData) {
       const parsedData = JSON.parse(storedUserData);
@@ -43,15 +42,14 @@ export default function MessageFeed() {
     // Fetch messages immediately
     fetchMessages();
 
-    // Set up an interval to fetch messages every 2 seconds
-   setInterval(fetchMessages, 2000);
 
   
   }, [userId]);
 
   return (
-    <div className="w-full flex flex-col gap-2 items-start justify-center overflow-y-auto">
-      <h2 className="text-xl font-medium text-zinc-600">Your Messages</h2>
+    <div className="w-full flex flex-col gap-2 items-start justify-center">
+      <h2 className="text-[1rem] font-medium text-black">Your Messages</h2>
+      <div className=" overflow-auto max-h-[530px] w-full flex flex-col gap-2 scrollbar-hidden">
       {messages.length > 0 ? (
         messages.map((message, index) => (
           <div
@@ -64,6 +62,8 @@ export default function MessageFeed() {
       ) : (
         <p className="text-zinc-500">No messages yet...</p>
       )}
+      </div>
+     
     </div>
   );
 }
