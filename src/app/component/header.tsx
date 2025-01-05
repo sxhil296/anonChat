@@ -3,9 +3,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { LogOut } from "lucide-react";
+// import { useRouter } from "next/router";
 
 export default function Header() {
   const [userId, setUserId] = useState("");
+  // const router = useRouter();
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");
@@ -22,6 +24,7 @@ export default function Header() {
       );
       localStorage.removeItem("userData");
       setUserId(""); 
+      // router.reload();
     } catch (error) {
       console.error("Failed to log out:", error);
     }

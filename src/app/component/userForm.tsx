@@ -13,9 +13,10 @@ export default function UserForm() {
 
 
   useEffect(() => {
-    const storedLink = localStorage.getItem("link");
-    if (storedLink) {
-      setLink(JSON.parse(storedLink));
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      const parsedData = JSON.parse(storedUserData);
+      setLink(parsedData.link);
     }
   }, []);
 
