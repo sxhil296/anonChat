@@ -40,10 +40,10 @@ export default function MessageFeed() {
       }
     };
 
-    fetchMessages();
+    // fetchMessages();
     // Optional: Refresh messages every 2 seconds
-    // const interval = setInterval(fetchMessages, 2000);
-    // return () => clearInterval(interval);
+    const interval = setInterval(fetchMessages, 2000);
+    return () => clearInterval(interval);
   }, [userId]);
 
   return (
