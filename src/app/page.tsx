@@ -4,10 +4,10 @@ import UserForm from "./component/userForm";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center min-h-screen w-full">
+    <main className="flex flex-col items-center min-h-screen w-full overflow-auto scrollbar-hidden">
       <Header />
 
-      <div className="max-w-3xl  mx-auto flex flex-col gap-4 md:gap-8 mt-12 md:mt-20 px-6 h-[84dvh] overflow-hidden">
+      <div className="max-w-3xl  mx-auto flex flex-col gap-4 md:gap-8 mt-14 md:mt-20 px-6 h-[84dvh] overflow-auto scrollbar-hidden">
         <div className=" space-y-2 md:space-y-4 mx-auto max-w-full">
           <h2 className="text-2xl md:text-4xl font-bold">
             Your Link, Their Thoughts - Anonymously!
@@ -24,7 +24,9 @@ export default function Home() {
 
         <UserForm />
       
+      <div className=" max-h-[94dvh] w-full flex flex-col gap-2 scrollbar-hidden">
       <MessageFeed />
+      </div>
  
       </div>
     </main>

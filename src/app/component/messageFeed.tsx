@@ -53,7 +53,7 @@ export default function MessageFeed() {
   return (
     <div className="w-full flex flex-col gap-2 items-start justify-start h-full pb-6">
       <h2 className="text-[1rem] font-medium text-black">Your Messages</h2>
-      <div className=" overflow-auto max-h-[88%] w-full flex flex-col gap-2 scrollbar-hidden">
+      <div className=" overflow-auto max-h-[98%] w-full flex flex-col gap-2 c">
       {loading ? ( 
           <p className="text-zinc-500">Loading...</p>
         ) : messages.length > 0 ? (

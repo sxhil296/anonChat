@@ -71,8 +71,8 @@ export default function UserForm() {
   return (
     <div className="w-full flex flex-col items-center gap-4">
       {!link ? (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full">
-          <label htmlFor="userName" className="font-mono text-zinc-600">
+        <form onSubmit={handleSubmit} className="flex flex-col w-full">
+          <label htmlFor="userName" className=" text-zinc-600">
             Enter your name
           </label>
           <input
@@ -83,7 +83,7 @@ export default function UserForm() {
             value={name}
             placeholder="Your name..."
             onChange={(e) => setName(e.target.value)}
-            className="border border-zinc-400 rounded-md px-4 py-2 bg-transparent w-full outline-black"
+            className="border border-zinc-400 rounded-md px-4 py-2 bg-transparent w-full outline-black mb-2"
           />
           <button
             type="submit"
@@ -99,7 +99,7 @@ export default function UserForm() {
           <p className="text-[1rem] font-medium">Your anonymous chat link:</p>
           <div className="flex flex-col gap-2 bg-white border border-black rounded-md px-4 py-2 w-full">
           <div className=" flex  items-center  justify-between">
-          <p className="text-blue-500 underline w-[200px] overflow-hidden text-ellipsis whitespace-nowrap" title={link}>
+          <p className="text-blue-500 underline w-[200px] md:w-full overflow-hidden text-ellipsis whitespace-nowrap" title={link}>
   {link}
 </p>
             {copied ? (
