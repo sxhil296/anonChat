@@ -1,10 +1,12 @@
+import Link from "next/link"
+
 export default function Footer(){
 
     const year = new Date().getFullYear()
 
     return(
-        <footer className="fixed bottom-0 w-full bg-transparent py-3 text-center">
-            <p className="text-lg text-zinc-500">{year} - anonChat</p>
+        <footer className="fixed bottom-0 w-full bg-transparent text-center py-1">
+            <p className="text-sm text-zinc-500">&copy; {year} - <Link href="/" className="underline">anonChat</Link></p>
         </footer>
     )
 }

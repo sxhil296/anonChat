@@ -17,14 +17,14 @@ export default function Home() {
             &nbsp;create a link, share it, and receive anonymous messages. Whether for
             fun or feedback, uncover what others have to say -
             <span className="bg-black text-white p-1">
-              no names, just honesty!
+             &nbsp; no names, just honesty!
             </span>
           </p>
         </div>
 
         <UserForm />
       
-      <div className=" max-h-[94dvh] w-full flex flex-col gap-2 scrollbar-hidden">
+      <div className="h-full w-full flex flex-col gap-2 scrollbar-hidden">
       <MessageFeed />
       </div>
  
