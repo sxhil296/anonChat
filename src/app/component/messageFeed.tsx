@@ -42,8 +42,8 @@ export default function MessageFeed() {
 
     // fetchMessages();
     // Optional: Refresh messages every 2 seconds
-    const interval = setInterval(fetchMessages, 2000);
-    return () => clearInterval(interval);
+    setInterval(fetchMessages, 2000);
+  
   }, [userId]);
 
   return (
