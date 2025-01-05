@@ -44,7 +44,7 @@ export default function MessageFeed() {
     fetchMessages();
 
     // Set up an interval to fetch messages every 2 seconds
-    const intervalId = setInterval(fetchMessages, 2000);
+   setInterval(fetchMessages, 2000);
 
   
   }, [userId]);
