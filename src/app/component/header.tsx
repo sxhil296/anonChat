@@ -32,8 +32,8 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 px-6 py-2 h-10 w-full border-b bg-white">
-      <div className="w-full flex justify-between items-center ">
+    <header className="fixed top-0 px-6 py-2 h-14 w-full border-b bg-zinc-50`">
+      <div className="w-full flex justify-between items-center py-2">
         <h1 className="font-mono text-xl font-medium">anonChat</h1>
         {userId && (
           <LogOut

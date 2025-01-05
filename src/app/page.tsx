@@ -12,12 +12,12 @@ export default function Home() {
           <h2 className="text-2xl md:text-4xl font-bold">
             Your Link, Their Thoughts - Anonymously!
           </h2>
-          <p className="text-[1rem] font-medium">
+          <p className="text-[1rem] font-medium text-zinc-500">
             With <span className="bg-black text-white p-1">anonChat,</span>
             &nbsp;create a link, share it, and receive anonymous messages. Whether for
-            fun or feedback, uncover what others have to say -
+            fun or feedback, uncover what others have to say - &nbsp;
             <span className="bg-black text-white p-1">
-             &nbsp; no names, just honesty!
+             no names, just honesty!
             </span>
           </p>
         </div>

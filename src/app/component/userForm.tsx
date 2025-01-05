@@ -97,7 +97,7 @@ export default function UserForm() {
       ) : (
         <div className="mt-4 w-full flex flex-col justify-start items-start gap-2">
           <p className="text-[1rem] font-medium">Your anonymous chat link:</p>
-          <div className="flex flex-col gap-2 bg-white border border-black rounded-md px-4 py-2 w-full">
+          <div className="flex flex-col gap-2 bg-white shadow rounded-md px-4 py-2 w-full">
           <div className=" flex  items-center  justify-between">
           <p className="text-blue-500 underline w-[200px] md:w-full overflow-hidden text-ellipsis whitespace-nowrap" title={link}>
   {link}
@@ -114,25 +114,25 @@ export default function UserForm() {
               </button>
             )}
           </div>
-          <div className="flex gap-2 justify-start">
-          <p className="text-[1rem] font-medium">Share on:</p>
+          <div className="flex gap-2 justify-start items-center">
+          <p className="text-[1rem]">Share on:</p>
           <FacebookShareButton url={link} className="">
             <FaFacebookSquare
-              size={30}
+              size={20}
               className="text-blue-600 hover:scale-105"
             />
           </FacebookShareButton>
           <TwitterShareButton url={link}>
-            <FaXTwitter size={30} className="text-black hover:scale-105" />
+            <FaXTwitter size={20} className="text-black hover:scale-105" />
           </TwitterShareButton>
           <LinkedinShareButton url={link} className="">
-            <FaLinkedin size={30} className="text-blue-600 hover:scale-105" />
+            <FaLinkedin size={20} className="text-blue-600 hover:scale-105" />
           </LinkedinShareButton>
           <TelegramShareButton url={link} className="">
-            <FaTelegram size={30} className="text-blue-400 hover:scale-105" />
+            <FaTelegram size={20} className="text-blue-400 hover:scale-105" />
           </TelegramShareButton>
           <WhatsappShareButton url={link} className="">
-            <FaWhatsapp size={30} className="text-green-500 hover:scale-105" />
+            <FaWhatsapp size={20} className="text-green-500 hover:scale-105" />
           </WhatsappShareButton>
         </div>
           </div>
