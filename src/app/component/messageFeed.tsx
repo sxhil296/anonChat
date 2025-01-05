@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 export default function MessageFeed() {
   const [messages, setMessages] = useState([]);
   const [userId, setUserId] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");
@@ -17,6 +18,7 @@ export default function MessageFeed() {
   useEffect(() => {
     const fetchMessages = async () => {
       if (userId) {
+        setLoading(true);
         try {
           const response = await axios.get(
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/chat/allmessages/${userId}`,
@@ -35,6 +37,8 @@ export default function MessageFeed() {
           }
         } catch (err) {
           console.error("Error fetching messages:", err);
+        }finally {
+          setLoading(false); 
         }
       }
     };
@@ -47,21 +51,23 @@ export default function MessageFeed() {
   }, [userId]);
 
   return (
-    <div className="w-full flex flex-col gap-2 items-start justify-center">
+    <div className="w-full flex flex-col gap-2 items-start justify-start h-full pb-6">
       <h2 className="text-[1rem] font-medium text-black">Your Messages</h2>
-      <div className=" overflow-auto max-h-[530px] w-full flex flex-col gap-2 scrollbar-hidden">
-      {messages.length > 0 ? (
-        messages.map((message, index) => (
-          <div
-            key={index}
-            className="bg-blue-500 text-white text-lg p-2 rounded-md"
-          >
-            {message}
-          </div>
-        ))
-      ) : (
-        <p className="text-zinc-500">No messages yet...</p>
-      )}
+      <div className=" overflow-auto max-h-[88%] w-full flex flex-col gap-2 scrollbar-hidden">
+      {loading ? ( 
+          <p className="text-zinc-500">Loading...</p>
+        ) : messages.length > 0 ? (
+          messages.map((message, index) => (
+            <div
+              key={index}
+              className="bg-blue-500 text-white text-lg p-2 rounded-md"
+            >
+              {message}
+            </div>
+          ))
+        ) : (
+          <p className="text-zinc-500">No messages yet...</p>
+        )}
       </div>
      
     </div>
