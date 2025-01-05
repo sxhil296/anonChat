@@ -10,6 +10,7 @@ const MessageForm = ({ userId }: { userId: string }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [linkExpired, setLinkExpired] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -28,11 +29,12 @@ const MessageForm = ({ userId }: { userId: string }) => {
           if (response.status === 200) {
             const { name } = response.data;
             setName(name);
-          } else {
-            console.error("Failed to fetch username.");
+          } else if (response.status === 404) {
+            setLinkExpired(true);
           }
         } catch (err) {
           console.error("Error fetching username:", err);
+          setLinkExpired(true);
         }
       }
     };
@@ -51,7 +53,7 @@ const MessageForm = ({ userId }: { userId: string }) => {
 
         if (response.status === 200) {
           setMessage("");
-          setSuccess(true); 
+          setSuccess(true);
           setError(null);
         } else {
           setError("Failed to send message. Please try again.");
@@ -67,28 +69,49 @@ const MessageForm = ({ userId }: { userId: string }) => {
     }
   };
 
+
+  if (linkExpired) {
+    return (
+      <div className="flex flex-col items-center justify-center gap-4">
+        <p className="text-red-500 text-center text-lg">
+        This link seems to have expired or is invalid. <br />
+        <span className="text-zinc-700">Create your own chat link to start a new conversation.</span>
+        </p>
+        <button
+          className="border border-black bg-black text-white px-4 py-2 rounded-md hover:bg-zinc-700"
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          Create Chat Link
+        </button>
+      </div>
+    );
+  }
+
   return (
     <>
       {success ? (
         <div className="flex flex-col items-center justify-between max-w-2xl mx-auto h-40 border border-black rounded-md p-4">
-          <p className="text-blue-500 font-medium">Message sent successfully!</p>
-         <div className="w-full flex justify-center items-center gap-4">
-         <button
-            onClick={() => setSuccess(false)}
-            className="border border-black px-4 py-2 rounded-md hover:bg-zinc-300"
-          >
-            Send Another Message
-          </button>
-          <button
-            className="border border-black bg-black text-white  px-4 py-2 rounded-md hover:bg-zinc-700"
-            onClick={() => {
-              router.push("/");
-          
-            }}
-          >
-            Create Your Chat Link
-          </button>
-         </div>
+          <p className="text-blue-500 font-medium">
+            Message sent successfully!
+          </p>
+          <div className="w-full flex justify-center items-center gap-4">
+            <button
+              onClick={() => setSuccess(false)}
+              className="border border-black px-4 py-2 rounded-md hover:bg-zinc-300"
+            >
+              Send Another Message
+            </button>
+            <button
+              className="border border-black bg-black text-white  px-4 py-2 rounded-md hover:bg-zinc-700"
+              onClick={() => {
+                router.push("/");
+              }}
+            >
+              Create Your Chat Link
+            </button>
+          </div>
         </div>
       ) : (
         <form onSubmit={handleMessageSubmit} className="w-full space-y-2">
